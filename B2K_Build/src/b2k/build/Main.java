@@ -15,16 +15,16 @@ import b2k.generic.sqlite.function.SQLFunction;
 public class Main {
 
 	public static void main(String[] args) throws SecurityException, IllegalArgumentException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, SQLException, InstantiationException {
-		Connection connection = MyConnection.getSQLiteConnection("menu");
-		Action action = new Action();
-		action.setName("getActionReception");
-		action.setClassName("b2k.reception.controller.ControllerReception");
-		SQLFunction.save(connection, action);
-		
-		action = new Action();
-		action.setName("getActionBilling");
-		action.setClassName("b2k.billing.controller.ControllerBilling");
-		SQLFunction.save(connection, action);
+//		Connection connection = MyConnection.getSQLiteConnection("menu");
+//		Action action = new Action();
+//		action.setName("getActionReception");
+//		action.setClassName("b2k.reception.controller.ControllerReception");
+//		SQLFunction.save(connection, action);
+//		
+//		action = new Action();
+//		action.setName("getActionBilling");
+//		action.setClassName("b2k.billing.controller.ControllerBilling");
+//		SQLFunction.save(connection, action);
 //		Module module = new Module();
 //		module.setHotKey("B");
 //		module.setName("Thu ngân");
