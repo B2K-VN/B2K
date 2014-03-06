@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/B2K_Lib"/>
+	<classpathentry kind="lib" path="C:/ant/lib/ant.jar"/>
+	<classpathentry kind="lib" path="system/b2k_cis.jar"/>
+	<classpathentry kind="lib" path="system/b2k_lib.jar"/>
+	<classpathentry kind="lib" path="system/b2k_main.jar"/>
+	<classpathentry kind="lib" path="system/ant.jar"/>
+	<classpathentry kind="lib" path="lib/b2k_rece.jar"/>
+	<classpathentry kind="lib" path="lib/b2k_util.jar"/>
+	<classpathentry kind="lib" path="lib/flamingo-6.2.jar"/>
+	<classpathentry kind="lib" path="lib/laf-plugin-6.2.jar"/>
+	<classpathentry kind="lib" path="lib/laf-widget-6.2.jar"/>
+	<classpathentry kind="lib" path="lib/substance-6.2.jar"/>
+	<classpathentry kind="lib" path="lib/substance-flamingo-6.2.jar"/>
+	<classpathentry kind="lib" path="lib/trident-6.2.jar"/>
+	<classpathentry kind="lib" path="system/b2k_sql.jar"/>
+	<classpathentry kind="lib" path="system/sqlite-jdbc4-3.8.2-SNAPSHOT.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

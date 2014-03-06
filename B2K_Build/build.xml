@@ -1,0 +1,79 @@
+<project name="B2K Co. LTD" basedir="." default="main">
+
+	<property name="src.dir" value="src" />
+
+	<property name="build.dir" value="build" />
+	<property name="classes.dir" value="${build.dir}/classes" />
+	<property name="jar.dir" value="${build.dir}/jar" />
+
+	<property name="main-project" value="b2k.build.Main" />
+
+	<property name="load-module" value="b2k.build.Update" />
+	
+	<property name="check-license" value="b2k.build.Cis_Main" />
+
+	<property name="lib.dir" value="lib" />
+	
+	<property name="lib.system" value="system" />
+
+
+	<path id="classpath_system">
+		<fileset dir="${lib.system}" includes="**/*.jar" />
+	</path>
+
+	<path id="classpath">
+		<fileset dir="${lib.system}" includes="**/*.jar" />
+		<fileset dir="${lib.dir}" includes="**/*.jar" />
+	</path>
+
+	<target name="compile">
+		<mkdir dir="${classes.dir}" />
+		<javac includeantruntime="false" srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath" />
+	</target>
+
+	<target name="jar" depends="compile">
+		<mkdir dir="${jar.dir}" />
+		<jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
+			<manifest>
+				<attribute name="Main-Class" value="${load-module}" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="log" description="Use the Task"  depends="jar">
+		<taskdef name="CheckLicense" classname="${check-license}" classpath="${jar.dir}/${ant.project.name}.jar"/>
+	</target>
+	
+	
+	
+	<target name="update" depends="jar">
+		<CheckLicense/>
+		<java fork="true" classname="${load-module}"
+			spawn="true">
+			<jvmarg line="-splash:images/splashScreen.png"/>
+			<arg value="${arg0}"/>
+			<arg value="${arg1}"/>
+			<classpath>
+				<path refid="classpath_system" />
+				<path location="${jar.dir}/${ant.project.name}.jar" />
+			</classpath>
+		</java>
+	</target>
+
+	<target name="run" depends="jar">
+		<java fork="true" classname="${main-project}">
+			<sysproperty key="keysis" value="${keycis}"/>
+			<classpath>
+				<path refid="classpath" />
+				<path location="${jar.dir}/${ant.project.name}.jar" />
+			</classpath>
+		</java>
+	</target>
+
+	<target name="clean">
+		<delete dir="${build.dir}" />
+	</target>
+
+	<target name="main" depends="log, update, run" />
+
+</project>
