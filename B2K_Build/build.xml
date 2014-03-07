@@ -74,6 +74,6 @@
 		<delete dir="${build.dir}" />
 	</target>
 
-	<target name="main" depends="log, update, run" />
+	<target name="main" depends=" run" />
 
 </project>

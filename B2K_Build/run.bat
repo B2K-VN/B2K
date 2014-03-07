@@ -1,4 +1,3 @@
-rem start javaw.exe -jar .\lib\Run_QuartzAlertStopServer\MyProject.jar
 @echo off
 rem set JAVA_HOME=.\jdk
 rem set ANT_HOME=.\ANT

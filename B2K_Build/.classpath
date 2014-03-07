@@ -18,5 +18,8 @@
 	<classpathentry kind="lib" path="lib/trident-6.2.jar"/>
 	<classpathentry kind="lib" path="system/b2k_sql.jar"/>
 	<classpathentry kind="lib" path="system/sqlite-jdbc4-3.8.2-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="lib/l2fprod-common-all.jar"/>
+	<classpathentry kind="lib" path="lib/b2k_bill.jar"/>
+	<classpathentry kind="lib" path="system/b2k_system.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
