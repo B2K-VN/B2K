@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="/B2K_Lib/lib/commons-lang3-3.1.jar"/>
+	<classpathentry kind="lib" path="/B2K_Lib/lib/commonsio.jar"/>
+	<classpathentry kind="lib" path="/B2K_Lib/lib/mongo-java-driver-2.11.4.jar"/>
+	<classpathentry kind="lib" path="/B2K_Lib/lib/sqlite-jdbc4-3.8.2-SNAPSHOT.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/B2K_Help"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/B2K_Human"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/B2K_Lib"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
