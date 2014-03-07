@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="lib/flamingo-6.2.jar"/>
+	<classpathentry kind="lib" path="lib/laf-plugin-6.2.jar"/>
+	<classpathentry kind="lib" path="lib/laf-widget-6.2.jar"/>
+	<classpathentry kind="lib" path="lib/substance-6.2.jar"/>
+	<classpathentry kind="lib" path="lib/substance-flamingo-6.2.jar"/>
+	<classpathentry kind="lib" path="lib/trident-6.2.jar"/>
+	<classpathentry kind="lib" path="lib/b2k_util.jar"/>
+	<classpathentry kind="lib" path="lib/b2k_rece.jar"/>
+	<classpathentry kind="lib" path="lib/ant.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/SQLConnect"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
