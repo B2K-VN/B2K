@@ -1,0 +1,135 @@
+<?php
+	//config menu 
+	if($tpl_menu_parent 		= $crv->get_block($html,'menu_parent'))
+	{
+		$tpl_menu_child 		= $crv->get_block($html,'menu_child');
+		$row = GetRows('categories_id,categories_name,categories_key','categories','parent_id=0 order by sort_order');
+		$n  = count($row);
+		for($i=0;$i<$n;++$i)
+		{
+			$categories_key = 'c/'.$row[$i]['categories_key'];
+			$tpl_parent = $crv->set($tpl_menu_parent,array(
+				'menu_parent'=>$row[$i]['categories_name'],
+				'menu_parent_key'=> $categories_key
+			));
+			
+			//cáº¥p 2
+			$tpl_menu_child_child 		= $crv->get_block($html,'menu_child_child');
+			$tpl_child = $tpl_child2 ='';
+			$row2 = GetRows('categories_id,categories_name,categories_key','categories','parent_id='.$row[$i]['categories_id'].'  order by sort_order');
+			$m=count($row2);
+			if($m)
+			{
+				for($j=0;$j<$m;++$j)
+				{
+					
+					$tpl_child.=$crv->set($tpl_menu_child,array(
+						'menu_parent_key'=>$categories_key,
+						'products_count'=>GetNumRow('products_id','products','categories_id="'.$row2[$j]['categories_id'].'"  and products_status=1'),
+						'menu_child_key'=> $row2[$j]['categories_key'].'/',
+						'menu_child'	=> $row2[$j]['categories_name']
+					));
+					
+					//cáº¥p 3
+					
+					$categories_key_child = 'c/'.$row2[$j]['categories_key'];
+					
+					$tpl_child_child = $tpl_child_child2 ='';
+					$row3 = GetRows('categories_id,categories_name,categories_key','categories','parent_id='.$row2[$j]['categories_id'].'  order by sort_order');
+					$m1=count($row3);
+					if($m1)
+					{
+						for($k=0;$k<$m1;++$k)
+						{
+							
+							$tpl_child_child.=$crv->set($tpl_menu_child_child,array(
+								'menu_parent_key'=>$categories_key_child,
+								'products_count'=>GetNumRow('products_id','products','categories_id="'.$row3[$j]['categories_id'].'"  and products_status=1'),
+								'menu_child_key'=> $row3[$k]['categories_key'].'/',
+								'menu_child'	=> $row3[$k]['categories_name']
+							));
+							
+						}
+					}
+					else
+					{
+						$row3 = GetRows('products_name,products_key','products','categories_id='.$row2[$j]['categories_id'].'  order by products_date_added desc');
+						$m1=count($row3);
+						if($m1)
+						{
+							for($k=0;$k<$m1;++$k)
+							{
+								$tpl_child_child.=$crv->set($tpl_menu_child_child,array(
+									'menu_parent_key'=>'p',
+									'menu_child_key'=> $row3[$k]['products_key'].'.html',
+									'menu_child'	=> $row3[$k]['products_name']
+								));
+							}
+						}
+					}
+			
+				}
+			}
+			else
+			{
+				$row2 = GetRows('products_name,products_key','products','categories_id='.$row[$i]['categories_id'].'  order by products_date_added desc');
+				$m=count($row2);
+				if($m)
+				{
+					for($j=0;$j<$m;++$j)
+					{
+						$tpl_child.=$crv->set($tpl_menu_child,array(
+							'menu_parent_key'=>'p',
+							'menu_child_key'=> $row2[$j]['products_key'].'.html',
+							'menu_child'	=> $row2[$j]['products_name']
+						));
+						
+						//cáº¥p 3
+						$categories_key_child = 'c/'.$row2[$j]['categories_key'];
+				
+						$tpl_child_child = $tpl_child_child2 ='';
+						$row3 = GetRows('categories_id,categories_name,categories_key','categories','parent_id='.$row2[$j]['categories_id'].'  order by sort_order');
+						$m1=count($row3);
+						if($m1)
+						{
+							for($k=0;$k<$m1;++$k)
+							{
+								
+								$tpl_child_child.=$crv->set($tpl_menu_child_child,array(
+									'menu_parent_key'=>$categories_key_child,
+									'products_count'=>GetNumRow('products_id','products','categories_id="'.$row3[$j]['categories_id'].'"  and products_status=1'),
+									'menu_child_key'=> $row3[$k]['categories_key'].'/',
+									'menu_child'	=> $row3[$k]['categories_name']
+								));
+								
+							}
+						}
+						else
+						{
+							$row3 = GetRows('products_name,products_key','products','categories_id='.$row2[$j]['categories_id'].'  order by products_date_added desc');
+							$m1=count($row3);
+							if($m1)
+							{
+								for($k=0;$k<$m1;++$k)
+								{
+									$tpl_child_child.=$crv->set($tpl_menu_child_child,array(
+										'menu_parent_key'=>'p',
+										'menu_child_key'=> $row3[$k]['products_key'].'.html',
+										'menu_child'	=> $row3[$k]['products_name']
+									));
+								}
+							}
+						}
+					}
+				}
+			}
+			$categories_menu .= $crv->assign_blocks($tpl_parent,array(
+				'menu_child'		=> $tpl_child,
+			));
+		}
+		$html = $crv->assign_blocks($html,array(
+		'menu_parent'	=> $categories_menu
+		));
+		$categories_menu ='';
+	}
+ ?>
