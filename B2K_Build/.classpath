@@ -21,5 +21,9 @@
 	<classpathentry kind="lib" path="lib/l2fprod-common-all.jar"/>
 	<classpathentry kind="lib" path="lib/b2k_bill.jar"/>
 	<classpathentry kind="lib" path="system/b2k_system.jar"/>
+	<classpathentry kind="lib" path="lib/b2k_human.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang3-3.1.jar"/>
+	<classpathentry kind="lib" path="lib/commonsio.jar"/>
+	<classpathentry kind="lib" path="lib/mongo-java-driver-2.11.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
